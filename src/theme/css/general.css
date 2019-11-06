@@ -21,8 +21,8 @@ body {
 }
 
 code {
-    font-family: Consolas, "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
-    font-size: 1em;
+    font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Consolas, Courier, monospace;
+    font-size: 0.875em;
 }
 
 .left { float: left; }
