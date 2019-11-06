@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family: "Open Sans", sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Meiryo", "Yu Gothic", YuGothic, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     color: var(--fg);
     background-color: var(--bg);
     text-size-adjust: none;
@@ -21,8 +21,8 @@ body {
 }
 
 code {
-    font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace !important;
-    font-size: 0.875em; /* please adjust the ace font size accordingly in editor.js */
+    font-family: Consolas, "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+    font-size: 1em;
 }
 
 .left { float: left; }
