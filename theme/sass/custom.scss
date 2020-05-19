@@ -4,6 +4,7 @@
 // font-family from Spectre.CSS
 $family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Meiryo", "Yu Gothic", YuGothic, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 
+$menu-list-border-left: 0;
 $menu-list-line-height: 1.0;
 $menu-nested-list-margin: inherit;
 
@@ -14,7 +15,7 @@ $menu-nested-list-margin: inherit;
 @import "utilities/functions.sass";
 
 // override colors to reduce size
-$colors: mergeColorMaps(("white": ($white, $black)), null);
+$colors: ();
 
 // utilities
 @import "utilities/derived-variables.sass";
@@ -42,6 +43,17 @@ $colors: mergeColorMaps(("white": ($white, $black)), null);
 // *overrides*
 body {
   height: 100vh;
+}
+
+.menu.sidebar {
+  padding: 1.25rem 1.25rem;
+}
+
+.navbar .book-title {
+  color: $grey-lighter;
+  &:hover {
+    color: $grey;
+  }
 }
 
 .is-fullheight {

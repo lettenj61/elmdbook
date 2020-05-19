@@ -22,7 +22,8 @@
   "homepage": "https://github.com/lettenj61/mdbook-bulma-mini#readme",
   "devDependencies": {
     "bulma": "^0.8.2",
-    "google-closure-compiler": "^20200517.0.0",
+    "rollup": "^2.10.3",
+    "rollup-plugin-closure-compiler": "^0.1.0",
     "sass": "^1.26.5"
   }
 }

@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bulma MdBook Example</title>
   <link rel="stylesheet" href="./dist/content.css">
+  <link rel="stylesheet" href="./dist/hljs.xcode.css">
+  <script src="./dist/highlight.pack.js"></script>
   <script src="./dist/markdown-it.min.js"></script>
 </head>
 <body>
   <div class="columns is-fullheight">
     <!-- menu -->
     <div class="column is-2-desktop">
-      <aside class="menu is-fullheight">
+      <aside class="menu sidebar is-fullheight">
         <ul class="menu-list">
           <li><a>Page 11</a></li>
           <li><a>Page 21</a></li>
@@ -22,6 +24,7 @@
             <!-- nested link -->
             <ul class="menu-list">
               <li><a>Child 55</a></li>
+              <li><a>Very Very Long And Unforgiving Unpredictable Remarkable Chapter Title For All Earthian Monkeys</a></li>
             </ul>
           </li>
           <li><a>Page 61</a></li>
@@ -35,7 +38,9 @@
       <nav class="navbar">
         <div class="navbar-brand">
           <a class="navbar-item">Doc</a>
-          <a class="navbar-item">Title</a>
+          <a class="navbar-item book-title">
+            Layout Showcase For Custom Theme
+          </a>
           <div class="navbar-burger">
             <span></span>
             <span></span>
@@ -49,6 +54,11 @@
         <div class="container is-fluid">
           <div class="content" id="content">
           </div>
+
+          <nav class="pagination is-rounded is-centered">
+            <a class="pagination-previous">Previous</a>
+            <a class="pagination-next">Next</a>
+          </nav>
         </div>
       </section>
     </div>
@@ -64,6 +74,19 @@ Too long didn't read.
 I am good at writing.
 
 > Also I hear good from people.
+
+```elm
+module Main exposing (main)
+
+import Browser
+
+main =
+  Browser.sandbox
+    { init = init
+    , update = update
+    , view = view
+    }
+```
   </script>
 
   <script>
@@ -75,7 +98,20 @@ I am good at writing.
       console.log(src);
 
       if (!window.markdownit) return;
-      md = markdownit();
+      md = markdownit({
+        html: true,
+        linkify: true,
+        typographer: true,
+
+        highlight: function(code, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return hljs.highlight(lang, code).value;
+            } catch (e) {}
+          }
+          return '';
+        }
+      });
       const html = md.render(src);
 
       content.innerHTML = html;
