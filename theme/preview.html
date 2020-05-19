@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulma MdBook Example</title>
+  <link rel="stylesheet" href="./dist/content.css">
+  <script src="./dist/markdown-it.min.js"></script>
+</head>
+<body>
+  <div class="columns is-fullheight">
+    <!-- menu -->
+    <div class="column is-2-desktop">
+      <aside class="menu is-fullheight">
+        <ul class="menu-list">
+          <li><a>Page 11</a></li>
+          <li><a>Page 21</a></li>
+          <li><a>Page 31</a></li>
+          <li><a>Page 41</a></li>
+          <li>
+            <a>Page 51</a>
+            <!-- nested link -->
+            <ul class="menu-list">
+              <li><a>Child 55</a></li>
+            </ul>
+          </li>
+          <li><a>Page 61</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- main -->
+    <div class="column">
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item">Doc</a>
+          <a class="navbar-item">Title</a>
+          <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- content -->
+      <section class="section page">
+        <div class="container is-fluid">
+          <div class="content" id="content">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="text/plain" id="markdown">
+# Heading
+
+Too long didn't read.
+
+## Section 1
+
+I am good at writing.
+
+> Also I hear good from people.
+  </script>
+
+  <script>
+    let md;
+    window.addEventListener('DOMContentLoaded', () => {
+      const content = document.getElementById('content');
+      const markdown = document.getElementById('markdown');
+      const src = markdown.innerHTML.trim();
+      console.log(src);
+
+      if (!window.markdownit) return;
+      md = markdownit();
+      const html = md.render(src);
+
+      content.innerHTML = html;
+    })
+  </script>
+</body>
+</html>

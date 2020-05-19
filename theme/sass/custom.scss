@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+// *configuration*
+// font-family from Spectre.CSS
+$family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Meiryo", "Yu Gothic", YuGothic, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+$menu-list-line-height: 1.0;
+$menu-nested-list-margin: inherit;
+
+
+// *import bulma*
+// initialization
+@import "utilities/initial-variables.sass";
+@import "utilities/functions.sass";
+
+// override colors to reduce size
+$colors: mergeColorMaps(("white": ($white, $black)), null);
+
+// utilities
+@import "utilities/derived-variables.sass";
+@import "utilities/animations.sass";
+@import "utilities/mixins.sass";
+@import "utilities/controls.sass";
+
+// base
+@import "base/minireset.sass";
+@import "base/generic.sass";
+@import "base/helpers.sass";
+
+// element & component
+@import "elements/container.sass";
+@import "elements/content.sass";
+@import "components/menu.sass";
+@import "components/navbar.sass";
+@import "components/pagination.sass";
+
+// grid and layout
+@import "grid/columns.sass";
+@import "layout/section.sass";
+
+
+// *overrides*
+body {
+  height: 100vh;
+}
+
+.is-fullheight {
+  height: 100%;
+}

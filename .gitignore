@@ -1,1 +1,8 @@
-book
+book/
+_ref/
+theme/dist/*
+example/src/theme/
+
+node_modules/
+
+yarn.lock

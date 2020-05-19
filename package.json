@@ -1,0 +1,28 @@
+{
+  "name": "mdbook-bulma-mini",
+  "version": "0.1.0",
+  "description": "A mdBook theme with configured Bulma css framework",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass -I node_modules/bulma/sass -s expanded --quiet --no-source-map theme/sass/custom.scss theme/dist/content.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lettenj61/mdbook-bulma-mini.git"
+  },
+  "keywords": [
+    "mdBook"
+  ],
+  "author": "lettenj61 <lettenj61@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lettenj61/mdbook-bulma-mini/issues"
+  },
+  "homepage": "https://github.com/lettenj61/mdbook-bulma-mini#readme",
+  "devDependencies": {
+    "bulma": "^0.8.2",
+    "google-closure-compiler": "^20200517.0.0",
+    "sass": "^1.26.5"
+  }
+}
