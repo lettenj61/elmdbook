@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="{{language}}" class="sidebar-visible no-js {{default_theme}}">
+<head>
+  <!-- Book generated using mdBook -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="mdbook">
+  <meta name="description" content="{{ description }}">
+  <meta name="theme-color" content="#ffffff" />
+  <title>{{ title }}</title>
+
+  <link rel="shortcut icon" href="{{ path_to_root }}{{ favicon }}">
+  {{!-- <link rel="stylesheet" href="{{ path_to_root }}css/variables.css"> --}}
+  <link rel="stylesheet" href="{{ path_to_root }}css/general.css">
+  {{!-- <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print"> --}}
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
+
+  <!-- higilight.js -->
+  <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
+  {{!-- <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css"> --}}
+  {{!-- <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css"> --}}
+
+  {{#if mathjax_support}}
+  <!-- MathJax -->
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  {{/if}}
+
+  <!-- highlight.js -->
+  <script src="{{ path_to_root }}highlight.js"></script>
+
+  <!-- Elm widgets -->
+  <script src="{{ path_to_root }}book.js"></script>
+  <!-- mdBook features -->
+  <script>
+    var mdBook = (function() {
+      var self = {}
+
+      function unquote(s) {
+        if (
+          typeof s === 'string' &&
+          (s.startsWith('"')  && s.endsWith('"'))
+        ) {
+          return s.slice(1, s.length - 1)
+        } else {
+          return s
+        }
+      }
+
+      self.root   = '{{path_to_root}}'
+      self.theme  = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? '{{preferred_dark_theme}}'
+        : '{{default_theme}}'
+        ;
+
+      self.unquote = unquote
+      self.readStorage = function(prop, defaults) {
+        try {
+          return localStorage.getItem(prop) || defaults
+        } catch (e) {
+          return defaults
+        }
+      }
+
+      self.setTokens = function(node, options) {
+        var on = options.on || [], off = options.off || []
+        ;
+
+        off.forEach(function(removed) {
+          node.classList.remove(removed)
+        })
+
+        on.forEach(function(added) {
+          node.classList.add(added)
+        })
+      }
+
+      self.init = function() {
+        var html = document.getElementsByTagName('html')[0]
+        var theme = self.readStorage('mdbook-theme', self.theme)
+        var sidebarStat = 'hidden'
+        if (document.body.clientWidth >= 1080) {
+          sidebarStat = self.readStorage('mdbook-sidebar', 'visible')
+        }
+
+        self.setTokens(html, {
+          off: ['no-js', '{{ default_theme }}', 'sidebar-visible'],
+          on: [theme, 'js', 'sidebar-' + sidebarStat]
+        })
+
+        if (window.hljs) {
+          hljs.initHighlightingOnLoad()
+        }
+      }
+
+      self.installPorts = function(sidebarElm, navbarElm) {
+        navbarElm.ports.forwardSidebarRequest.subscribe(function() {
+          sidebarElm.ports.changeSidebar.send()
+        })
+      }
+
+      return self
+    })()
+  </script>
+</head>
+
+<body>
+  <div class="columns is-fullheight">
+    <div class="column is-2-desktop">
+      <aside id="sidebar"></aside>
+    </div>
+    <div class="column has-navbar-fixed-top">
+      <nav class="navbar" id="navbar"></nav>
+      <div class="section page">
+        <div class="container">
+          <div class="content" id="content">
+            {{{ content }}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // workaround for https://github.com/rust-lang/mdBook/issues/402
+    var chapters = []
+    {{#each chapters}}
+    chapters.push({
+      name: '{{this.name}}',
+      path: '{{this.path}}'.replace(/\.md$/, '.html'),
+      section: '{{this.section}}'
+    })
+    {{/each}}
+    mdBook.init()
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var sidebar = Elm.Sidebar.init({
+        node: document.getElementById('sidebar'),
+        flags: {
+          current: '{{path}}',
+          chapters: chapters
+        }
+      })
+
+      var navbar = Elm.Navbar.init({
+        node: document.getElementById('navbar'),
+        flags: {
+          title: '{{title}}',
+          themes: []
+        }
+      })
+
+      mdBook.installPorts(sidebar, navbar)
+    })
+  </script>
+</body>
+</html>

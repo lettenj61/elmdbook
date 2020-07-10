@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass -I node_modules/bulma/sass -s expanded --quiet --no-source-map theme/sass/custom.scss theme/dist/content.css"
+    "elm": "elm make --output theme/dist/book.js --optimize theme/elm/Navbar.elm theme/elm/Sidebar.elm",
+    "sass": "sass -I node_modules/bulma/sass -s expanded --quiet --no-source-map theme/sass/custom.scss theme/dist/book.css"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   },
   "homepage": "https://github.com/lettenj61/mdbook-bulma-mini#readme",
   "devDependencies": {
-    "bulma": "^0.8.2",
+    "bulma": "^0.9.0",
     "rollup": "^2.10.3",
     "rollup-plugin-closure-compiler": "^0.1.0",
     "sass": "^1.26.5"

@@ -18,7 +18,7 @@ $menu-nested-list-margin: inherit;
 $colors: ();
 
 // utilities
-@import "utilities/derived-variables.sass";
+@import "utilities/derived-variables.scss";
 @import "utilities/animations.sass";
 @import "utilities/mixins.sass";
 @import "utilities/controls.sass";
