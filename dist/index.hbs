@@ -76,6 +76,10 @@
         })
       }
 
+      self.changeExtension = function(path) {
+        return path.replace(/\.md$/, '.html')
+      }
+
       self.init = function() {
         var html = document.getElementsByTagName('html')[0]
         var theme = self.readStorage('mdbook-theme', self.theme)
@@ -127,7 +131,7 @@
     {{#each chapters}}
     chapters.push({
       name: '{{this.name}}',
-      path: '{{this.path}}'.replace(/\.md$/, '.html'),
+      path: mdBook.changeExtension('{{this.path}}'),
       section: '{{this.section}}'
     })
     {{/each}}
@@ -137,7 +141,7 @@
       var sidebar = Elm.Sidebar.init({
         node: document.getElementById('sidebar'),
         flags: {
-          current: '{{path}}',
+          current: mdBook.changeExtension('{{path}}'),
           chapters: chapters
         }
       })
