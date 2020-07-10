@@ -2,8 +2,20 @@
 
 A [mdBook][mdbook] theme with:
 
-* [Bulma][bulma] for styles.
-* [Elm][elm] for widgets.
+* [Bulma][bulma] for styles
+* [Elm][elm] for widgets
+
+
+## Features
+
+- [x] Basic layout
+- [x] Sidebar
+  - [ ] Sidebar toggle
+- [x] Navbar
+  - [ ] Switch themes
+  - [ ] Search
+- [ ] Print page
+- [ ] Additional assets
 
 
 ## Development
@@ -12,7 +24,8 @@ A [mdBook][mdbook] theme with:
 
 1.  Install [Node.js][nodejs] (I use `v14.2.0`)
 2.  Install [Yarn][yarnpkg] (I use `v1.22.4`)
-3.  Install [mdBook][mdbook] to start development server
+3.  Install [Elm][elm] (I use `v0.19.1`)
+4.  Install [mdBook][mdbook]
 
 ### Build
 
