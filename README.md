@@ -1,6 +1,10 @@
-# mdbook-bulma-mini
+# elmdbook
 
-A [mdBook][mdbook] theme uses [Bulma][bulma] for styles.
+A [mdBook][mdbook] theme with:
+
+* [Bulma][bulma] for styles.
+* [Elm][elm] for widgets.
+
 
 ## Development
 
@@ -15,7 +19,7 @@ A [mdBook][mdbook] theme uses [Bulma][bulma] for styles.
 Clone this repository:
 
 ```sh
-$ git clone https://github.com/lettenj61/markdown-bulma-mini.git
+$ git clone https://github.com/lettenj61/elmdbook.git
 ```
 
 Install dependencies:
@@ -41,12 +45,15 @@ $ mdbook serve
 
 ## License
 
-MIT. See [LICENSE](./LICENSE)
+MIT.
+
+See [LICENSE](./LICENSE)
 
 
 
 
 [mdbook]: https://github.com/rust-lang/mdBook
 [bulma]: https://bulma.io/
+[elm]: https://elm-lang.org/
 [nodejs]: https://nodejs.org/
 [yarnpkg]: https://yarnpkg.com/

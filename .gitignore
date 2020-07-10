@@ -1,10 +1,10 @@
 _ref/
-theme/dist/*
+
 example/book/
 example/theme/
+theme/book.temp.js
 
 elm-stuff/
-elm-book.js
 node_modules/
 
 yarn.lock

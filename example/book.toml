@@ -5,4 +5,4 @@ multilingual = false
 src = "src"
 title = "Test"
 [output.html]
-theme = "theme"
+theme = "../dist"

@@ -1,16 +1,18 @@
 {
-  "name": "mdbook-bulma-mini",
+  "name": "elmdbook",
   "version": "0.1.0",
   "description": "A mdBook theme with configured Bulma css framework",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "elm": "elm make --output theme/dist/book.js --optimize theme/elm/Navbar.elm theme/elm/Sidebar.elm",
-    "sass": "sass -I node_modules/bulma/sass -s expanded --quiet --no-source-map theme/sass/custom.scss theme/dist/book.css"
+    "elm": "elm make --output theme/book.temp.js --optimize theme/elm/Navbar.elm theme/elm/Sidebar.elm",
+    "sass": "sass -I node_modules/bulma/sass -s compressed --quiet --no-source-map theme/sass/custom.scss dist/css/general.css",
+    "minify": "google-closure-compiler --js theme/book.temp.js --js_output_file dist/book.js",
+    "build": "yarn sass && yarn elm && yarn minify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lettenj61/mdbook-bulma-mini.git"
+    "url": "git+https://github.com/lettenj61/elmdbook.git"
   },
   "keywords": [
     "mdBook"
@@ -18,13 +20,12 @@
   "author": "lettenj61 <lettenj61@users.noreply.github.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lettenj61/mdbook-bulma-mini/issues"
+    "url": "https://github.com/lettenj61/elmdbook/issues"
   },
-  "homepage": "https://github.com/lettenj61/mdbook-bulma-mini#readme",
+  "homepage": "https://github.com/lettenj61/elmdbook#readme",
   "devDependencies": {
     "bulma": "^0.9.0",
-    "rollup": "^2.10.3",
-    "rollup-plugin-closure-compiler": "^0.1.0",
+    "google-closure-compiler": "20200628.0.0",
     "sass": "^1.26.5"
   }
 }
